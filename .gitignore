@@ -1,0 +1,23 @@
+# project
+bin
+obj
+compile_commands.json
+.cache
+
+# vscode
+.vscode
+
+# gmake / gmake2
+Makefile
+*.make
+
+# xcode4
+*.xcodeproj
+*.xcworkspace
+
+# vs2022
+*.sln
+*.vcxproj
+
+# macos
+.DS_Store

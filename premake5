@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "freebsd"* ]]
+then
+	.premake/bin/linux ${@:1}
+elif [[ "$OSTYPE" == "darwin"* ]]
+then
+	.premake/bin/macos ${@:1}
+else
+	echo "Unsupported operating system."
+fi
