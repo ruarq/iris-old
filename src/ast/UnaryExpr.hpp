@@ -1,11 +1,12 @@
 #ifndef IRIS_AST_UNARY_EXPR_HPP
 #define IRIS_AST_UNARY_EXPR_HPP
 
+#include "AcceptExprVisitor.hpp"
 #include "Expr.hpp"
 #include "common.hpp"
 
 namespace iris::ast {
-	struct UnaryExpr : public Expr {
+	struct UnaryExpr : public AcceptExprVisitor<UnaryExpr> {
 	public:
 		enum class Op {
 			Negate,
@@ -13,13 +14,6 @@ namespace iris::ast {
 
 	public:
 		IRIS_CONSTRUCTOR UnaryExpr(Op op, std::unique_ptr<Expr> &&expr);
-
-	public:
-		auto eval() -> int override {
-			switch (op) {
-				case Op::Negate: return -expr->eval();
-			}
-		}
 
 	public:
 		Op op;
