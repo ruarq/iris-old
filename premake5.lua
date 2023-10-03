@@ -6,6 +6,8 @@ kind("ConsoleApp")
 language("C++")
 cppdialect("C++20")
 
+includedirs({ "src" })
+
 buildoptions({ "`pkg-config fmt --cflags`" })
 linkoptions({ "`pkg-config fmt --libs`" })
 
