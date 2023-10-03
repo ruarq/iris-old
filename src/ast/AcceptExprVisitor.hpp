@@ -9,7 +9,7 @@ namespace iris::ast {
 	template<typename TClass>
 	struct AcceptExprVisitor : public Expr {
 	public:
-		auto accept(ExprVisitor &visitor) -> void {
+		auto accept(ExprVisitor &visitor) -> void override {
 			visitor.visit(*(TClass *)this);
 		}
 	};

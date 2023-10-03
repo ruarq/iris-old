@@ -25,6 +25,8 @@ namespace iris::ast {
 		Op op;
 		std::unique_ptr<Expr> right;
 	};
+
+	IRIS_NODISCARD auto to_string(BinaryExpr::Op op) -> std::string_view;
 }
 
 #endif

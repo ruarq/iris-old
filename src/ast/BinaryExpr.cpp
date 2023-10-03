@@ -6,4 +6,14 @@ namespace iris::ast {
 		, op{ op }
 		, right{ std::move(right) } {
 	}
+
+	auto to_string(const BinaryExpr::Op op) -> std::string_view {
+		switch (op) {
+			case BinaryExpr::Op::Add: return "+";
+			case BinaryExpr::Op::Sub: return "-";
+			case BinaryExpr::Op::Mul: return "*";
+			case BinaryExpr::Op::Div: return "/";
+			case BinaryExpr::Op::Mod: return "%";
+		}
+	}
 }

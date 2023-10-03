@@ -19,6 +19,8 @@ namespace iris::ast {
 		Op op;
 		std::unique_ptr<Expr> expr;
 	};
+
+	IRIS_NODISCARD auto to_string(UnaryExpr::Op op) -> std::string_view;
 }
 
 #endif

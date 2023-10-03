@@ -10,6 +10,7 @@
 #include "lexer/DefaultLexerImpl.hpp"
 #include "lexer/Lexer.hpp"
 #include "parser/Parser.hpp"
+#include "util/AstGraphDump.hpp"
 
 struct ExprEvaluator : public iris::ast::ExprVisitor {
 public:
@@ -60,26 +61,27 @@ private:
 };
 
 auto main(int argc, char **argv) -> int {
-	using namespace iris::ast;
-
-	if (argc != 2) {
+	if (argc < 2 || argc > 3) {
 		fmt::print("Usage: iris <expr>\n");
 		return 1;
 	}
 
-	iris::core::Source source{ "<internal>", std::string{ argv[1] } };
+	iris::core::Source source{ "<internal>", std::string{ argv[argc - 1] } };
 
 	iris::core::SymbolMap symbols;
 	iris::lexer::DefaultLexerImpl lexer_impl{ source, symbols };
 	iris::lexer::Lexer lexer{ lexer_impl };
 	iris::parser::Parser parser{ lexer, symbols };
 
-	ExprEvaluator eval;
-
 	auto expr = parser.parse_expr();
-	expr->accept(eval);
-
-	fmt::print("Result: {}\n", eval.get_result());
+	if (argc == 3 && !std::strcmp("--dump-ast", argv[1])) {
+		iris::util::AstGraphDump dumper;
+		dumper.dump(*expr);
+	} else {
+		ExprEvaluator eval;
+		expr->accept(eval);
+		fmt::print("Result: {}\n", eval.get_result());
+	}
 
 	return 0;
 }
