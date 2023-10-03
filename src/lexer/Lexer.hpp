@@ -6,6 +6,7 @@
 #include "LexerImpl.hpp"
 #include "Token.hpp"
 #include "common.hpp"
+#include "core/Source.hpp"
 
 namespace iris::lexer {
 	struct Lexer {
@@ -13,13 +14,12 @@ namespace iris::lexer {
 		static constexpr usz buffer_size = 1024;
 
 	public:
-		IRIS_CONSTRUCTOR Lexer();
 		IRIS_CONSTRUCTOR Lexer(LexerImpl &impl);
 
 	public:
 		IRIS_NODISCARD auto current() -> Token;
 		IRIS_NODISCARD auto peek(usz amount) -> Token;
-		IRIS_NODISCARD auto consume() -> Token;
+		auto consume() -> Token;
 
 	private:
 		auto require_buffer_size(usz size) -> void;
