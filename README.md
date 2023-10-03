@@ -1,7 +1,23 @@
-# Template
-All premake5 binaries in `.premake/bin` have the version `5.0.0-beta1`
+# iris
 
-```bash
-./premake5 gmake2       # generate makefile
-make                    # run makefile
+Iris is a general-purpose multi-paradigm (functional, procedural, structural)
+programming language.
+
+# Building
+
+## Dependencies
+
+- libfmt:10.1.0+
+- A C++ compiler (clang++:14+)
+- make:3.81+
+
+## Instructions
+
+Run
+
+```sh
+./premake5 gmake2
+make config=release
 ```
+
+The binaries will be in the `./bin/release` directory.
