@@ -1,5 +1,7 @@
 # iris
 
+[![C/C++ CI](https://github.com/ruarq/iris/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/ruarq/iris/actions/workflows/c-cpp.yml)
+
 Iris is a general-purpose multi-paradigm (functional, procedural, structural)
 programming language.
 
